@@ -1,0 +1,264 @@
+\documentclass[12pt,letterpaper]{report}
+\usepackage{epsfig}
+\usepackage{setspace}
+\usepackage{helvet}%sets the sffamily font to helvetica
+%\usepackage{pstricks}
+\usepackage{fancyhdr}
+%\usepackage{amsmath} % See http://en.wikibooks.org/wiki/LaTeX/Print_version, for /tfrac and /dfrac use
+\usepackage[toc,page]{appendix}
+\usepackage{hyperref}
+\usepackage{graphicx,color}
+\usepackage{slashed}
+\usepackage{amsmath,amssymb}
+\usepackage{hhline}
+\usepackage{epstopdf}
+\usepackage{caption}
+\usepackage{calc}
+\usepackage{tabularx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{cite}
+\usepackage{bm}
+\usepackage{feynmf,epsfig,euscript,url,float,booktabs,verbatim}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{blindtext}
+\usepackage{caption}
+\usepackage{tabu}
+\usepackage{tikz-feynman}
+\usepackage{simplewick}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{appendix}
+\usepackage{apptools}
+\usepackage{titlesec}
+\usepackage{subfig}
+\PassOptionsToPackage{subfigure}{tocloft}
+\usepackage{fixmetodonotes}
+%\usepackage[sort]{natbib}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format headings
+\renewcommand{\chaptername}{CHAPTER}
+
+\titleformat
+{\chapter} % command
+[hang] % shape
+% Add \singlespacing here if it's a problem
+{\normalfont\normalsize\bfseries\center} % format
+{\chaptertitlename\ \thechapter} % label
+{1em} % sep
+{\MakeUppercase} % before code
+
+\titleformat
+{\section} % command
+[hang] % shape
+{\normalfont\normalsize\bfseries} % format
+{\thesection} % label
+{1em} % sep
+{} % before code
+
+\titleformat
+{\subsection} % command
+[hang] % shape
+{\normalfont\normalsize\bfseries} % format
+{\thesubsection} % label
+{1em} % sep
+{} % before code
+
+\titlecontents{figure}[2.25cm]{\singlespacing \normalfont}
+{\hspace{-2.45cm} \makebox[2.25cm][l]{Figure \contentslabel{0em}}}{\hspace*{0cm}}
+{\titlerule*[0.3cm]{.} \contentspage}
+
+ \titlecontents{table}[2.25cm]{\singlespacing \normalfont}
+{\hspace{-2.45cm} \makebox[2.25cm][l]{Table \contentslabel{0em}}}{\hspace*{0cm}}
+{\titlerule*[0.3cm]{.} \contentspage}
+
+
+% No extra space left/before/after headings
+\titlespacing{\chapter}{0in}{-0.5in}{0in}
+\titlespacing{\section}{0in}{0in}{0in}
+\titlespacing{\subsection}{0in}{0in}{0in}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Format table of contents
+
+
+
+% fixes appendices
+\makeatletter
+\g@addto@macro\appendix{%
+  \addtocontents{toc}{%
+		\protect\renewcommand{\protect\cftchappresnum}{\appendixname\space}%
+		\protect\renewcommand{\protect\cftchapnumwidth}{6.7 em}%
+  }%
+}
+\makeatother
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% This line is to avoid a warning message. May need to use something different.
+\setlength{\headheight}{15pt}
+
+%fix spacing in bib
+\let\oldbibliography\thebibliography
+\renewcommand{\thebibliography}[1]{%
+  \oldbibliography{#1}%
+  \setlength{\itemsep}{0pt}%
+}
+\large
+\doublespacing
+% Text Sizes
+\textwidth  6.5 in
+\textheight 9.0 in
+\topmargin     -0.6in % Maybe -0.625
+
+\oddsidemargin  0.00in
+\evensidemargin 0.00in
+\showboxdepth=0
+\catcode`\@=11 % @ signs are allowed in definitions
+\def\cs2{CS$_2$}
+\sffamily
+% Always indent a paragraph -- even first in a section
+%\let\@afterindentfalse\@afterindenttrue
+%\@afterindenttrue
+% Always indent a paragraph -- even first in a section
+
+\pagestyle{plain}
+
+\def\Nile{{\sc Nile}}
+%\includeonly{file_list with commas as delimiters, no spaces}  %this option allows only selected range of filesto be included in the output, but all other files are taken into account for page numbering references etc.
+\def\pslash{\rlap{\hspace{0.02cm}/}{p}}
+\def\kslash{\rlap{\hspace{0.02cm}/}{k}}
+\def\lslash{\rlap{\hspace{-0.02cm}/}{l}}
+\def\vslash{\rlap{\hspace{0.02cm}/}{v}}
+\def\nslash{\rlap{\hspace{0.02cm}/}{n}}
+\def\nbslash{\rlap{\hspace{0.02cm}/}{\bar n}}
+\def\nslash{\rlap{\hspace{0.02cm}/}{n}}
+\def\nbslash{\rlap{\hspace{0.02cm}/}{\bar n}}
+\def\delslash{\rlap{\hspace{0.02cm}/}{\partial}}
+\def\Dslash{\rlap{\hspace{0.07cm}/}{D}}
+\def\Aslash{\rlap{\hspace{0.08cm}/}{A}}
+\def\calAslash{\rlap{\hspace{0.08cm}/}{{\EuScript A}}}
+\def\vslash{\rlap{\hspace{0.02cm}/}{v}}
+\def\Ahc{{\cal X}}
+\def\hc{\xi_{hc}}
+\def\ahc{\xi_{\overline{hc}}}
+\def\hcbar{\bar\xi_{hc}}
+\def\ahcbar{\bar\xi_{\overline{hc}}}
+\def\Ahc{{\EuScript A}_{hc}}
+\def\Aahc{{\EuScript A}_{\overline{hc}}}
+\def\bsg{$\bar B\to X_s\gamma$}
+\def\bulv{$\bar B\to X_u l\,\bar\nu$}
+
+%\input{header.tex}
+
+\begin{document}
+
+	% sets numbering upto 2nd level in chapter,section, subsection, subsubsection
+	% numbering starts from 0 - so chapter = 0, section = 1, etc
+	\setcounter{secnumdepth}{3} 
+
+	% makes levels up to the 2nd (subsection) appear in the table of contents
+	\setcounter{tocdepth}{1}
+	
+	% set page numbering for the preliminary pages to roman numerals
+	\pagenumbering{roman}
+	\include{title}
+
+	%Include this if you intend to copyright your document
+	%\include{copyright}
+
+	% add dedication and acknowledgements
+	\setcounter{page}{2} 
+	%\addcontentsline{toc}{chapter}{Dedication}
+	%\include{dedication}
+	\renewcommand{\cftchapfillnum}[1]{
+     {\cftsecleader}\nobreak
+     \hb@xt@\@pnumwidth{\cftsecleader\cftchappagefont #1}\cftchapafterpnum\par} 
+	\addcontentsline{toc}{chapter}{Acknowledgments}
+
+	\include{acknowledgements}
+	
+
+	% build table of contents
+	\renewcommand{\contentsname}{Table of Contents}
+  	\tableofcontents
+
+  	
+  		% add LOT - it requires some formatting changes
+
+	% add list of figures - it requires some formatting changes
+	\newpage
+	
+	%\let\@cftmakeloftitle\relax
+	%\setlength\cftbeforefigskip{10pt}
+	\renewcommand{\listfigurename}{LIST OF FIGURES}
+    \addcontentsline{toc}{chapter}{LIST OF FIGURES}
+	\listoffigures 
+	\newpage
+	\renewcommand{\listtablename}{LIST OF TABLES}
+	\addcontentsline{toc}{chapter}{LIST OF TABLES}
+	\listoftables
+	
+	
+	% start the body of the work on a new page
+	\newpage
+
+	\pagenumbering{arabic}
+  \pagestyle{fancy}
+  \fancyhead{} 
+	\fancyfoot{} % clear all header and footer fields
+  \chead[]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0pt}
+	\fancypagestyle{plain}{%
+		% clear all header and footer fields
+		\fancyhf{} 
+		% except the center
+		\fancyhead[C]{\thepage} 
+		\renewcommand{\headrulewidth}{0pt}
+		\renewcommand{\footrulewidth}{0pt}
+	}
+
+	% insert chapters
+	% Add more chapters by copying chapters/chapter_1.tex and adding a line for it here	
+	
+	\include{Chap1}
+	\include{Chap2}
+	\include{Chap3}
+	\include{Chap4}
+	\include{Chap5}
+	\include{Chap6}
+	\include{Chap7}	
+	
+	% insert appendices
+	% Comment the following line if you don't have an appendix
+	% for a new appendix, copy appendices/appendix_a.tex and add a new line here
+	%\begin{appendices}
+\appendix
+\addcontentsline{toc}{chapter}{Appendix A}
+\include{AppendixA}
+\addcontentsline{toc}{chapter}{Appendix B}
+\include{AppendixB}
+	%\end{appendices}
+	
+	
+	\addcontentsline{toc}{chapter}{Bibliography}
+  	\bibliographystyle{unsrt}
+ 	 \include{Bibliography}
+
+	\newpage
+
+	% add abstract
+  \addcontentsline{toc}{chapter}{Abstract}        
+	\include{abstract}
+
+	% add autobiographical statement
+	\addcontentsline{toc}{chapter}{Autobiographical Statement}
+  \include{autobio}
+
+\end{document} 
+% done 
